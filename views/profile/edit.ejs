@@ -1,0 +1,63 @@
+<%- layout('layouts/boilerplate.ejs') %>
+
+<div class="row">
+    <h1 class="text-center">Edit Profile</h1>
+    <div class="col-6 offset-3">
+        <form method="POST" action="/profile/<%= user._id %>?_method=PUT" enctype="multipart/form-data" novalidate class="validated-form">
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" name="image"> <!--No need to specify multiple as upload.single() is used not upload.array()-->
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" id="email" type="email" name="email" value="<%= user.email %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>          <!--Value is different from placeholder-->
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" id="location" type="text" name="location" value="<%= user.location %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-control" id="username" type="text" name="username" value="<%= user.username %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="age">Age</label>
+                <input class="form-control" id="age" type="number" name="age" value="<%= user.age %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>         
+            <div class="mb-3">
+                <label class="form-label" for="about">About</label>
+                <textarea class="form-control" id="about" type="text" name="about" required><%= user.about %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+           <div class="mb-3">
+            <% if(user.image && user.image.url) { %>
+                <img src="<%= user.image.url %>" alt="Profile Image" class="img-thumbnail" style="width: 200px;">
+                <div class="form-check-inline">
+                    <input type="checkbox" id="image" name="deleteImage[]" value="<%= user.image.filename %>">
+                <!--The value of any checkbox that was checked is stored in deleteImage array-->
+                <!--This deleteImage array is stored in req.body as req.body.deleteImages-->
+                </div>
+                <label for="image">Delete?</label>
+            <% } %>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-info">Update User</button>
+            </div>
+        </form>
+        <a href="/profile/<%= user._id %>">Back to Profile</a>
+    </div>
+</div>
+
