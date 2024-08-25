@@ -22,7 +22,7 @@ const profileRoutes = require('./routes/profile');
 const mongoSanitize = require('express-mongo-sanitize');
 const { contentSecurityPolicy } = require('helmet');
 
-const MongoDBStore = require("connect-mongo")(session);  //This helps us to store our session information in the mongo database
+const MongoStore = require('connect-mongo');  //This helps us to store our session information in the mongo database
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 //contentSecurityPolicy this allows us to specify like only images from unsplash will be allowed to work it lets us define which resources are to be
 //used for our web-application like we are only allowed to use fonts from google fonts, etc.,
@@ -44,13 +44,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public'))); //the scripts directly go in the public folder
 
-const store = new MongoDBStore.create({
+const store = new MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
         secret: 'thisshouldbeasecret!'
     }
-})
+});
 
 store.on("error", function(e) {
     console.log("Session Store Error" + e);
