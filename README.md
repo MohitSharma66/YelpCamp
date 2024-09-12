@@ -2,6 +2,9 @@
 
 <p><b>YelpCamp</b> is a full-stack web application that allows users to create, browse, and review campgrounds. Built with Node.js, Express, MongoDB, and other modern web technologies, it features user authentication, profile pages, image uploads, and review functionality.</p>
 
+<h2><b>Project Link</b></h2>
+<p>You can view the live version of YelpCamp at <a href="https://yelpcamp-m3ss.onrender.com">https://yelpcamp-m3ss.onrender.com</a>.</p>
+
 <h2><b>Table of Contents</b></h2>
 <ul>
   <li><a href="#features">Features</a></li>
@@ -22,7 +25,6 @@
   <li><b>Review System:</b> Users can add reviews to campgrounds and rate them.</li>
   <li><b>Image Uploads:</b> Upload and display campground images using Cloudinary.</li>
   <li><b>Responsive Design:</b> Fully responsive for desktop and mobile views.</li>
-  <li><b>Search Functionality:</b> Search for campgrounds by name or location.</li>
 </ul>
 
 <h2 id="installation"><b>Installation</b></h2>
